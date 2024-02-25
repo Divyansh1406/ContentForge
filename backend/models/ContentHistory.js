@@ -18,6 +18,6 @@ const historySchema = new mongoose.Schema(
 );
 
 //compile to form the model
-const ContentHistory = mongoose.mongo("ContentHistory", historySchema);
+const ContentHistory = mongoose.model("ContentHistory", historySchema);
 
 module.exports = ContentHistory;
