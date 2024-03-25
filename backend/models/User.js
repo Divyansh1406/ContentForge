@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//schema
+//Schema
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -17,18 +17,19 @@ const userSchema = new mongoose.Schema(
     },
     trialPeriod: {
       type: Number,
-      default: 3,
+      default: 3, //3 days
     },
     trialActive: {
       type: Boolean,
-      required: true,
+      default: true,
     },
     trialExpires: {
       type: Date,
     },
-    subscription: {
+    subscriptionPlan: {
       type: String,
       enum: ["Trial", "Free", "Basic", "Premium"],
+      default: "Trial",
     },
     apiRequestCount: {
       type: Number,
@@ -36,29 +37,30 @@ const userSchema = new mongoose.Schema(
     },
     monthlyRequestCount: {
       type: Number,
-      default: 0,
+      default: 100, //100 credit //3 days
     },
-
     nextBillingDate: Date,
     payments: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Payment", //refernce payment model
+        ref: "Payment",
       },
     ],
-    history: [
+    contentHistory: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "History",
+        ref: "ContentHistory",
       },
     ],
   },
   {
-    timestamps: true, //provides timestamps with each query
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
 
-//compile to form the model
+//! Compile to form the model
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

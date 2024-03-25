@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//schema
+//Schema
 const historySchema = new mongoose.Schema(
   {
     user: {
@@ -13,11 +13,11 @@ const historySchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, //provides timestamps with each query
+    timestamps: true,
   }
 );
 
-//compile to form the model
+//! Compile to form the model
 const ContentHistory = mongoose.model("ContentHistory", historySchema);
 
 module.exports = ContentHistory;

@@ -1,13 +1,13 @@
 {
-  "name": "masync-mern-ai-frontend",
+  "name": "contentforge",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@stripe/react-stripe-js": "^2.3.2",
-    "@tanstack/react-query": "^5.8.4",
-    "@tanstack/react-query-devtools": "^5.8.4",
+    "@tanstack/react-query": "^5.28.8",
+    "@tanstack/react-query-devtools": "^5.28.8",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

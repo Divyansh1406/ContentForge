@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//schema
+//Schema
 const paymentSchema = new mongoose.Schema(
   {
     user: {
@@ -11,38 +11,34 @@ const paymentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    currency: {
+      type: String,
+      required: true,
+    },
     status: {
       type: String,
-      default: "Pending",
+      default: "pending",
       required: true,
     },
     subscriptionPlan: {
       type: String,
       required: true,
     },
+
     amount: {
       type: Number,
       default: 0,
     },
     monthlyRequestCount: {
       type: Number,
-      required: true,
-    },
-    apiRequestCount: {
-      type: Number,
-      default: 0,
-    },
-    monthlyRequestCount: {
-      type: Number,
-      default: 0,
     },
   },
   {
-    timestamps: true, //provides timestamps with each query
+    timestamps: true,
   }
 );
 
-//compile to form the model
+//! Compile to form the model
 const Payment = mongoose.model("Payment", paymentSchema);
 
 module.exports = Payment;

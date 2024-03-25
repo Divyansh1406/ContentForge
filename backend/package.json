@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "contentforge",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,17 +7,33 @@
     "start": "node server.js",
     "server": "nodemon server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tweneboah/masync-mern-ai-backend.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tweneboah/masync-mern-ai-backend/issues"
+  },
+  "homepage": "https://github.com/tweneboah/masync-mern-ai-backend#readme",
   "dependencies": {
+    "@google/generative-ai": "^0.3.1",
+    "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
-    "dotenv": "^16.4.5",
+    "cohere-ai": "^7.9.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.1.3"
+    "mongoose": "^8.0.1",
+    "node-cron": "^3.0.3",
+    "stripe": "^14.20.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.3"
+    "nodemon": "^3.0.1"
   }
 }
