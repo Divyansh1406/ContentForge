@@ -6,6 +6,29 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { getUserProfileAPI } from "../../apis/user/usersAPI";
 import StatusMessage from "../Alert/StatusMessage";
 import { generateContentAPI } from "../../apis/chatGPT/chatGPT";
+const formatText = (text) => {
+  try {
+    return text
+      .split(/\n\s*\n/)
+      .map((paragraph, index) => (
+        <p key={index}>
+          {paragraph
+            .split(/\*{1,2}/)
+            .map((part, index) =>
+              index % 2 === 0 ? (
+                part.trim() ? (
+                  <span key={index}>{part}</span>
+                ) : (
+                  <br key={index} />
+                )
+              ) : (
+                <b key={index}>{part}</b>
+              )
+            )}
+        </p>
+      ));
+  } catch (e) {}
+};
 
 const BlogPostAIAssistant = () => {
   const [generatedContent, setGeneratedContent] = useState("");
@@ -174,7 +197,7 @@ const BlogPostAIAssistant = () => {
             <h3 className="text-lg font-semibold text-gray-800 mb-2">
               Generated Content:
             </h3>
-            <p className="text-gray-600">{mutation.data}</p>
+            {formatText(mutation.data)}
           </div>
         )}
       </div>

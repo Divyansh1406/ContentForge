@@ -10,9 +10,8 @@ import { createStripePaymentIntentAPI } from "../../apis/stripePayment/stripePay
 import StatusMessage from "../Alert/StatusMessage";
 
 const CheckoutForm = () => {
-  //Get the payloads
+  // Get the payloads
   const params = useParams();
-
   const [searchParams] = useSearchParams();
   const plan = params.plan;
   const amount = searchParams.get("amount");
@@ -20,13 +19,12 @@ const CheckoutForm = () => {
     mutationFn: createStripePaymentIntentAPI,
   });
 
-  //Stripe configuration
+  // Stripe configuration
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
-  console.log(amount);
 
-  //Handle submit
+  // Handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (elements === null) {
@@ -37,12 +35,13 @@ const CheckoutForm = () => {
       return;
     }
     try {
-      //prepare our data for payment
+      // Prepare data for payment
       const data = {
         amount,
         plan,
+        description: "Description of exported goods or services", // Add description here
       };
-      //Make the http request
+      // Make the HTTP request
       mutation.mutate(data);
 
       if (mutation?.isSuccess) {
@@ -61,6 +60,7 @@ const CheckoutForm = () => {
       setErrorMessage(error?.message);
     }
   };
+
   return (
     <div className="bg-gray-900 h-screen -mt-4 flex justify-center items-center">
       <form
@@ -72,10 +72,10 @@ const CheckoutForm = () => {
         </div>
         {/* Display loading */}
         {mutation?.isPending && (
-          <StatusMessage type="loading" message="Proccessing please wait..." />
+          <StatusMessage type="loading" message="Processing, please wait..." />
         )}
 
-        {/* Display success */}
+        {/* Display error */}
         {mutation?.isError && (
           <StatusMessage
             type="error"

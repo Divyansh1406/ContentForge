@@ -51,9 +51,9 @@ const openAIController = asyncHandler(async (req, res) => {
       const result = await model.generateContent(prompt1);
       const response = await result.response;
       const text = await response.text();
-      console.log(text);
 
       const content = text;
+      console.log(content);
 
       //Create the history
       const newContent = await ContentHistory.create({

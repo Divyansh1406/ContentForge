@@ -18,8 +18,8 @@ const handlestripePayment = asyncHandler(async (req, res) => {
   try {
     //Create payment intent
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Number(amount) * 100,
-      currency: "usd",
+      amount: Number(amount) * 100 * 83.5,
+      currency: "inr",
       //add some data the meta object
       metadata: {
         userId: user?._id?.toString(),
@@ -85,6 +85,7 @@ const verifyPayment = asyncHandler(async (req, res) => {
           trialPeriod: 0,
           nextBillingDate: calculateNextBillingDate(),
           apiRequestCount: 0,
+          trialActive: true,
           monthlyRequestCount: 50,
           subscriptionPlan: "Basic",
           $addToSet: { payments: newPayment?._id },
@@ -103,6 +104,8 @@ const verifyPayment = asyncHandler(async (req, res) => {
           trialPeriod: 0,
           nextBillingDate: calculateNextBillingDate(),
           apiRequestCount: 0,
+          trialActive: true,
+
           monthlyRequestCount: 100,
           subscriptionPlan: "Premium",
           $addToSet: { payments: newPayment?._id },
@@ -142,9 +145,11 @@ const handleFreeSubscription = asyncHandler(async (req, res) => {
         subscriptionPlan: "Free",
         amount: 0,
         status: "success",
+        trialActive: true,
+
         reference: Math.random().toString(36).substring(7),
         monthlyRequestCount: 5,
-        currency: "usd",
+        currency: "inr",
       });
       user.payments.push(newPayment?._id);
       //save the user

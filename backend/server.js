@@ -25,7 +25,7 @@ cron.schedule("0 0 * * * *", async () => {
         trialExpires: { $lt: today },
       },
       {
-        trialActive: false,
+        trialActive: true,
         subscriptionPlan: "Free",
         monthlyRequestCount: 5,
       }
@@ -47,6 +47,7 @@ cron.schedule("0 0 1 * * *", async () => {
         nextBillingDate: { $lt: today },
       },
       {
+        trialActive: false,
         monthlyRequestCount: 0,
       }
     );
@@ -66,6 +67,7 @@ cron.schedule("0 0 1 * * *", async () => {
         nextBillingDate: { $lt: today },
       },
       {
+        trialActive: false,
         monthlyRequestCount: 0,
       }
     );
@@ -85,6 +87,7 @@ cron.schedule("0 0 1 * * *", async () => {
         nextBillingDate: { $lt: today },
       },
       {
+        trialActive: false,
         monthlyRequestCount: 0,
       }
     );

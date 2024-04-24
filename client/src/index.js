@@ -11,11 +11,11 @@ import { AuthProvider } from "./AuthContext/AuthContext";
 
 //Stripe configuration
 const stripePromise = loadStripe(
-  "pk_test_51LVGZED8n0ExDwA4ocq21Al6QdhH7mgu9wk26r0mOCAB1n4dYb8CwepGCH6BvQvggiyLogZjxQsSHNHrxPUoaha200iDWOiYVW"
+  "pk_test_51OsjekSDA8Koexi5yZguxhW5HuzGnG0xnwa74eXH8ikoJJNDs78a3MuyidPnZnWKxe4l5qjxChG25CSYTo5nFX3r00zpiOeXOz"
 );
 const options = {
   mode: "payment",
-  currency: "usd",
+  currency: "inr",
   amount: 1099,
 };
 const root = ReactDOM.createRoot(document.getElementById("root"));
